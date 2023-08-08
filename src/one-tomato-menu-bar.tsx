@@ -32,6 +32,7 @@ export default function OneTomatoMenuBar() {
     launchCommand({
       name: "finish",
       type: LaunchType.UserInitiated,
+      context: { name: "timeout", sessionType: getSession().type },
     });
     icon = Icon.Emoji;
   }
