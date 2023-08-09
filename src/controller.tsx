@@ -1,4 +1,4 @@
-import { Cache } from "@raycast/api";
+import { Cache, getPreferenceValues } from "@raycast/api";
 
 const cache = new Cache();
 const cacheKey = "one-tomato";
@@ -8,11 +8,11 @@ const currentTimestamp = () => new Date().valueOf();
 export function createSession(type: "focus" | "shortBreak" | "longBreak") {
   let duration;
   if (type === "focus") {
-    duration = 25 * 60 * 1000;
+    duration = parseInt(getPreferenceValues().focusDuration) * 60 * 1000;
   } else if (type === "shortBreak") {
-    duration = 5 * 60 * 1000;
+    duration = parseInt(getPreferenceValues().shortBreakDuration) * 60 * 1000;
   } else if (type === "longBreak") {
-    duration = 15 * 60 * 1000;
+    duration = parseInt(getPreferenceValues().longBreakDuration) * 60 * 1000;
   } else {
     throw new Error("Invalid session type");
   }

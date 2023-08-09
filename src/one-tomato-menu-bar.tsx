@@ -1,4 +1,4 @@
-import { MenuBarExtra, Icon, launchCommand, LaunchType } from "@raycast/api";
+import { MenuBarExtra, Icon, launchCommand, LaunchType, getPreferenceValues } from "@raycast/api";
 import { useState } from "react";
 import {
   createSession,
@@ -71,7 +71,7 @@ export default function OneTomatoMenuBar() {
           <MenuBarExtra.Section title="Pomodoro">
             <MenuBarExtra.Item
               title="Start Focus"
-              subtitle="25 minutes"
+              subtitle={getPreferenceValues().focusDuration + " minutes"}
               shortcut={{ modifiers: ["opt"], key: "p" }}
               icon={"🍅"}
               onAction={() => handleCreateSession("focus")}
@@ -80,14 +80,14 @@ export default function OneTomatoMenuBar() {
           <MenuBarExtra.Section title="Break">
             <MenuBarExtra.Item
               title="Start Short Break"
-              subtitle="5 minutes"
+              subtitle={getPreferenceValues().shortBreakDuration + " minutes"}
               shortcut={{ modifiers: ["opt"], key: "s" }}
               icon={"☕️"}
               onAction={() => handleCreateSession("shortBreak")}
             />
             <MenuBarExtra.Item
               title="Start Long Break"
-              subtitle="15 minutes"
+              subtitle={getPreferenceValues().longBreakDuration + " minutes"}
               shortcut={{ modifiers: ["opt"], key: "l" }}
               icon={"🏝️"}
               onAction={() => handleCreateSession("longBreak")}

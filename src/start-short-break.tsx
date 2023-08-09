@@ -1,7 +1,15 @@
-import { LaunchType, closeMainWindow, launchCommand, popToRoot } from "@raycast/api";
+import {
+  LaunchType,
+  closeMainWindow,
+  getPreferenceValues,
+  launchCommand,
+  popToRoot,
+  updateCommandMetadata,
+} from "@raycast/api";
 import { createSession } from "./controller";
 
 export default () => {
+  updateCommandMetadata({ subtitle: getPreferenceValues().shortBreakDuration + " minutes" });
   createSession("shortBreak");
   try {
     launchCommand({
